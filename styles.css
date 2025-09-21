@@ -282,7 +282,7 @@ h1, h2, h3, h4, h5, h6 {
 .motorcycle-3d {
     width: 500px;
     height: 400px;
-    background: linear-gradient(45deg, #e74c3c, #f39c12);
+    background: linear-gradient(45deg, #922fe4, #3d2ec7);
     border-radius: 20px;
     position: relative;
     animation: float 3s ease-in-out infinite;
@@ -569,7 +569,7 @@ body.dark .price-badge { filter: saturate(0.9) brightness(0.95); }
 
 .gallery-bike-1, .gallery-bike-2, .gallery-bike-3,
 .gallery-bike-4, .gallery-bike-5, .gallery-bike-6 {
-    background: linear-gradient(45deg, #e74c3c, #f39c12, #9b59b6, #3498db);
+    background: linear-gradient(45deg, #922fe4, #3d2ec7, #9b59b6, #3498db);
     background-size: 400% 400%;
     animation: gradientShift 4s ease infinite;
 }
@@ -660,7 +660,7 @@ body.dark .price-badge { filter: saturate(0.9) brightness(0.95); }
 }
 
 .about-bike {
-    background: linear-gradient(45deg, #e74c3c, #f39c12);
+    background: linear-gradient(45deg, #922fe4, #3d2ec7);
     border-radius: 20px;
     height: 400px;
     position: relative;
