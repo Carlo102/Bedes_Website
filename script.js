@@ -277,24 +277,34 @@ galleryItems.forEach((item, index) => {
 
 function showLightbox() {
     const lightboxImg = lightbox.querySelector('.lightbox-image');
-    const bikePlaceholder = galleryImages[currentImageIndex].querySelector('.bike-placeholder');
+    const currentItem = galleryImages[currentImageIndex];
+    const bikePlaceholder = currentItem.querySelector('.bike-placeholder');
+    const actualImage = currentItem.querySelector('img');
     
-    // Create a temporary canvas to convert the placeholder to an image
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 400;
-    canvas.height = 300;
+    if (actualImage) {
+        // If it's an actual image, use it directly
+        lightboxImg.src = actualImage.src;
+        lightboxImg.alt = actualImage.alt || 'Gallery Image';
+    } else if (bikePlaceholder) {
+        // If it's a placeholder, create a canvas representation
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 400;
+        canvas.height = 300;
+        
+        // Draw the placeholder as an image
+        ctx.fillStyle = bikePlaceholder.style.background || '#e74c3c';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Add motorcycle emoji
+        ctx.font = '80px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('🏍️', canvas.width / 2, canvas.height / 2 + 30);
+        
+        lightboxImg.src = canvas.toDataURL();
+        lightboxImg.alt = 'Motorcycle Placeholder';
+    }
     
-    // Draw the placeholder as an image
-    ctx.fillStyle = bikePlaceholder.style.background || '#e74c3c';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Add motorcycle emoji
-    ctx.font = '80px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('🏍️', canvas.width / 2, canvas.height / 2 + 30);
-    
-    lightboxImg.src = canvas.toDataURL();
     lightbox.classList.add('active');
 }
 
