@@ -679,7 +679,7 @@ body.dark .price-badge { filter: saturate(0.9) brightness(0.95); }
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: #0f141a;
 }
 
 .contact-content {
