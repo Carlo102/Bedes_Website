@@ -305,9 +305,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background: transparent(45deg, #ecf0f1, #ecf0f1);
-    color: white;
-    border: none;
+    background: #ecf0f1;
+    color: #2c3e50;
+    transform: translateY(-2px);
 }
 
 .btn-primary:hover {
