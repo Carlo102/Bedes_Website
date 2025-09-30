@@ -1517,7 +1517,7 @@ body.dark .newsletter-form button:hover { background: #d68910; }
     }
 }
 
-/* High DPI Displays */
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .hero::before {
         background-size: 200% 200%;
