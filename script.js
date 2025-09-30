@@ -12,14 +12,13 @@ hamburger.addEventListener('click', () => {
     }
 });
 
-// Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
     document.body.style.overflow = '';
 }));
 
-// Close mobile menu when clicking outside
+
 document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
         hamburger.classList.remove('active');
@@ -28,7 +27,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close mobile menu on window resize
 window.addEventListener('resize', () => {
     if (window.innerWidth > 767) {
         hamburger.classList.remove('active');
@@ -37,7 +35,6 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -51,7 +48,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
@@ -61,7 +57,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Theme toggle (dark mode) with persistence
 const themeToggleBtn = document.getElementById('theme-toggle');
 const userThemePreference = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -91,7 +86,6 @@ if (themeToggleBtn) {
     });
 }
 
-// Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -106,7 +100,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.feature-card, .model-card, .gallery-item, .about-text, .about-image');
     
@@ -118,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Scroll to top button behavior
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => {
     if (!scrollTopBtn) return;
@@ -135,7 +127,6 @@ if (scrollTopBtn) {
     });
 }
 
-// Active nav link highlighting on scroll
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -163,7 +154,6 @@ function setActiveNav() {
 window.addEventListener('scroll', setActiveNav, { passive: true });
 window.addEventListener('load', setActiveNav);
 
-// Gallery lightbox functionality
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.createElement('div');
 lightbox.className = 'lightbox';
@@ -178,7 +168,6 @@ lightbox.innerHTML = `
     </div>
 `;
 
-// Add lightbox styles
 const lightboxStyles = `
     .lightbox {
         position: fixed;
@@ -254,15 +243,12 @@ const lightboxStyles = `
     }
 `;
 
-// Add styles to head
 const styleSheet = document.createElement('style');
 styleSheet.textContent = lightboxStyles;
 document.head.appendChild(styleSheet);
 
-// Add lightbox to body
 document.body.appendChild(lightbox);
 
-// Gallery functionality
 let currentImageIndex = 0;
 const galleryImages = Array.from(galleryItems);
 
@@ -280,21 +266,21 @@ function showLightbox() {
     const actualImage = currentItem.querySelector('img');
     
     if (actualImage) {
-        // If it's an actual image, use it directly
+        
         lightboxImg.src = actualImage.src;
         lightboxImg.alt = actualImage.alt || 'Gallery Image';
     } else if (bikePlaceholder) {
-        // If it's a placeholder, create a canvas representation
+        
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = 400;
         canvas.height = 300;
         
-        // Draw the placeholder as an image
+        
         ctx.fillStyle = bikePlaceholder.style.background || '#e74c3c';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Add motorcycle emoji
+        /
         ctx.font = '80px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('🏍️', canvas.width / 2, canvas.height / 2 + 30);
@@ -306,7 +292,7 @@ function showLightbox() {
     lightbox.classList.add('active');
 }
 
-// Lightbox controls
+
 lightbox.querySelector('.lightbox-close').addEventListener('click', hideLightbox);
 lightbox.querySelector('.lightbox-prev').addEventListener('click', () => {
     currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
@@ -317,7 +303,6 @@ lightbox.querySelector('.lightbox-next').addEventListener('click', () => {
     showLightbox();
 });
 
-// Close lightbox when clicking outside
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
         hideLightbox();
@@ -328,7 +313,6 @@ function hideLightbox() {
     lightbox.classList.remove('active');
 }
 
-// Keyboard navigation for lightbox
 document.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('active')) {
         if (e.key === 'Escape') {
@@ -343,20 +327,18 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Contact form handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
+
         const formData = new FormData(contactForm);
         const name = formData.get('name');
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-        // Simple validation
         if (!name || !email || !subject || !message) {
             showNotification('Please fill in all fields', 'error');
             return;
@@ -373,19 +355,16 @@ if (contactForm) {
     });
 }
 
-// Email validation
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Notification system
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
     
-    // Add notification styles
     const notificationStyles = `
         .notification {
             position: fixed;
@@ -417,7 +396,6 @@ function showNotification(message, type = 'info') {
         }
     `;
     
-    // Add styles if not already added
     if (!document.querySelector('#notification-styles')) {
         const style = document.createElement('style');
         style.id = 'notification-styles';
@@ -427,12 +405,10 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Show notification
     setTimeout(() => {
         notification.classList.add('show');
     }, 100);
     
-    // Hide notification after 3 seconds
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => {
@@ -441,7 +417,6 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Newsletter subscription
 const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
@@ -458,7 +433,6 @@ if (newsletterForm) {
     });
 }
 
-// Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -468,7 +442,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Counter animation for stats
 function animateCounters() {
     const counters = document.querySelectorAll('.stat h3');
     
@@ -492,7 +465,6 @@ function animateCounters() {
     });
 }
 
-// Trigger counter animation when stats section is visible
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -507,11 +479,9 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Add loaded class styles
     const loadedStyles = `
         body {
             opacity: 0;
@@ -528,7 +498,6 @@ window.addEventListener('load', () => {
     document.head.appendChild(style);
 });
 
-// Smooth reveal animation for sections
 const revealElements = document.querySelectorAll('.features, .models, .gallery, .about, .contact');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -546,7 +515,6 @@ revealElements.forEach(el => {
     revealObserver.observe(el);
 });
 
-// Add hover effects to buttons
 document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-2px) scale(1.05)';
@@ -557,7 +525,6 @@ document.querySelectorAll('.btn').forEach(btn => {
     });
 });
 
-// Add click ripple effect to buttons
 document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         const ripple = document.createElement('span');
@@ -579,7 +546,6 @@ document.querySelectorAll('.btn').forEach(btn => {
     });
 });
 
-// Touch-friendly interactions for mobile
 let touchStartY = 0;
 let touchEndY = 0;
 
@@ -607,7 +573,6 @@ function handleSwipe() {
     }
 }
 
-// Responsive image loading
 function loadResponsiveImages() {
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -624,20 +589,16 @@ function loadResponsiveImages() {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// Mobile-specific optimizations
 function optimizeForMobile() {
     if (window.innerWidth <= 768) {
-        // Reduce animation complexity on mobile
+        
         document.body.classList.add('mobile-optimized');
         
-        // Disable hover effects on touch devices
         document.body.classList.add('touch-device');
         
-        // Optimize scroll performance
         let ticking = false;
         
         function updateScroll() {
-            // Throttled scroll updates for better performance
             ticking = false;
         }
         
@@ -652,13 +613,11 @@ function optimizeForMobile() {
     }
 }
 
-// Viewport height fix for mobile browsers
 function setViewportHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-// Handle orientation change
 function handleOrientationChange() {
     setTimeout(() => {
         setViewportHeight();
@@ -666,7 +625,6 @@ function handleOrientationChange() {
     }, 100);
 }
 
-// Initialize responsive features
 document.addEventListener('DOMContentLoaded', () => {
     setViewportHeight();
     optimizeForMobile();
@@ -680,7 +638,6 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('orientationchange', handleOrientationChange);
 
-// Performance optimization for mobile
 if ('IntersectionObserver' in window) {
     const lazyElements = document.querySelectorAll('.lazy');
     const lazyObserver = new IntersectionObserver((entries) => {
@@ -695,7 +652,6 @@ if ('IntersectionObserver' in window) {
     lazyElements.forEach(el => lazyObserver.observe(el));
 }
 
-// Prevent zoom on double tap for mobile
 let lastTouchEnd = 0;
 document.addEventListener('touchend', (e) => {
     const now = (new Date()).getTime();
@@ -705,7 +661,6 @@ document.addEventListener('touchend', (e) => {
     lastTouchEnd = now;
 }, false);
 
-// Add mobile-specific CSS classes
 if (window.innerWidth <= 768) {
     document.body.classList.add('mobile');
 } else if (window.innerWidth <= 1024) {
@@ -725,7 +680,6 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Add ripple effect styles
 const rippleStyles = `
     .btn {
         position: relative;
