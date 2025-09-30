@@ -1,4 +1,3 @@
-// Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -6,7 +5,6 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
     
-    // Prevent body scroll when menu is open
     if (navMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
     } else {
