@@ -305,7 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, #922fe4, #3d2ec7);
+    background: linear-gradient(45deg, #ecf0f1);
     color: white;
     border: none;
 }
