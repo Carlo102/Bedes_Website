@@ -1,2 +1,2 @@
 # Bedes-website-main
-A Motorcycle Shop using HTML,CSS, JAVASCRIPT 
+A Motorcycle Shop using HTML,CSS, and JAVASCRIPT 
