@@ -212,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #df0d0d 0%, #df0d0d 100%);
     display: flex;
     align-items: center;
     position: relative;
